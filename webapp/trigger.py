@@ -1,7 +1,7 @@
 
 import requests
 
-import config
+from . import config
 
 
 # Trigger Action ###################################################################################

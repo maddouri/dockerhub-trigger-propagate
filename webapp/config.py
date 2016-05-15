@@ -4,9 +4,9 @@ from os import getenv
 # example configuration for https://hub.docker.com/r/maddouri/void-docker/
 
 # docker hub user name
-userName     = 'maddouri'
+userName = 'maddouri'
 # docker hub repository name
-repoName     = 'void-docker'
+repoName = 'void-docker'
 
 # build trigger token
 # obtained from "Build Settings > Build Trigger"
@@ -63,4 +63,4 @@ propagationPort_dev = 5000
 
 # delay (in seconds) before triggering the next build
 # avoids "Ignored, build throttle" error in docker hub
-propagationDelay = 60  # 60sec seems to be Ok
+propagationDelay = 100  # 120sec seems to be Ok

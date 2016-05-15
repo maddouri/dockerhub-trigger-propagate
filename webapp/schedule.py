@@ -1,14 +1,15 @@
 
 # Procfile
 #   clock: python3 schedule.py
+#   clock: python3 -m webapp.schedule
 
 import logging
 from apscheduler.schedulers.blocking import BlockingScheduler
 import requests
 import os
 
-import config
-import trigger
+from . import config
+from . import trigger
 
 
 # https://stackoverflow.com/a/17551794/865719

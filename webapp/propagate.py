@@ -1,6 +1,7 @@
 
 # Procfile
 #   web: gunicorn propagate:app --log-file -
+#   web: gunicorn webapp.propagate:app --log-file -
 
 
 from flask import Flask, request, jsonify
@@ -10,8 +11,8 @@ import sys
 import threading
 import time
 
-import config
-import trigger
+from . import config
+from . import trigger
 
 # @TODO improve error handling/exceptions
 
