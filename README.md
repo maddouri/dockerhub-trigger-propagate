@@ -11,6 +11,7 @@ It is configured to be hosted on [Heroku](https://www.heroku.com/) but can be ad
 on other hosts.
 
 The app is composed of 2 processes:
+
 1. [`schedule.py`](./webapp/schedule.py) triggers building the first tag according to the scheduling
    specified in [`config.triggerScheduling`](./webapp/config.py)
 2. [`propagate.py`](./webapp/propagate.py) is a webhook (called by Docker Hub) that triggers building subsequent
@@ -33,24 +34,27 @@ Finally, `git` and [`heroku toolbelt`](https://toolbelt.heroku.com/) are require
 
 1. In the terminal
     1. Clone/download this repository
-    ```sh
-    git clone https://github.com/maddouri/dockerhub-trigger-propagate.git
-    wget -qO- https://github.com/maddouri/dockerhub-trigger-propagate/archive/master.tar.gz | tar xvz
-    ```
+
+        ```sh
+        git clone https://github.com/maddouri/dockerhub-trigger-propagate.git
+        wget -qO- https://github.com/maddouri/dockerhub-trigger-propagate/archive/master.tar.gz | tar xvz
+        ```
     1. Initialize a new Heroku app
-    ```sh
-    cd dockerhub-trigger-propagate
-    heroku login
-    heroku create
-    ```
+
+        ```sh
+        cd dockerhub-trigger-propagate
+        heroku login
+        heroku create
+        ```
     1. Edit the [`webapp/config.py`](./webapp/config.py) file
     1. Get the base URL of the Heroku app
-    ```sh
-    $ heroku info
-    === my-app-name-1234
-    ...
-    Web URL:       https://my-app-name-1234.herokuapp.com/
-    ```
+
+        ```sh
+        $ heroku info
+        === my-app-name-1234
+        ...
+        Web URL:       https://my-app-name-1234.herokuapp.com/
+        ```
 1. Go to [Docker Hub](https://hub.docker.com)
     1. Create an [Automated Build](https://docs.docker.com/docker-hub/builds/)
     1. In the new Docker Hub repo, go to the **Build Settings** page
@@ -61,21 +65,25 @@ Finally, `git` and [`heroku toolbelt`](https://toolbelt.heroku.com/) are require
     1. Go to the repo's **Webhooks** page
     1. Add the Heroku app's URL as a webhook. e.g. if you have set `propagationRoute` to `'/propagate'`
     in [`webapp/config.py`](./webapp/config.py), then webhook URL is:
-    ```
-    https://my-app-name-1234.herokuapp.com/propagate
-    ```
+
+        ```
+        https://my-app-name-1234.herokuapp.com/propagate
+        ```
 1. In the terminal
     1. Add the **Trigger Token** as an environment variable in Heroku
-    ```sh
-    heroku config:set DOCKERHUB_TRIGGER_TOKEN='<docker hub trigger token>'
-    ```
+
+        ```sh
+        heroku config:set DOCKERHUB_TRIGGER_TOKEN='<docker hub trigger token>'
+        ```
     1. Push the app to Heroku
-    ```sh
-    git add .
-    git commit -m 'Initial deployment'  # if this fails, remember to use 'git config user.name' and 'git config user.email'
-    git push heroku master
-    ```
+
+        ```sh
+        git add .
+        git commit -m 'Initial deployment'  # if this fails, remember to use 'git config user.name' and 'git config user.email'
+        git push heroku master
+        ```
 1. Done. You can now monitor the app by looking at the logs
-```sh
-heroku logs -t
-```
+
+    ```sh
+    heroku logs -t
+    ```
