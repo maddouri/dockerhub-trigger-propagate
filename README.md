@@ -1,4 +1,6 @@
 
+[![License](https://img.shields.io/github/license/maddouri/dockerhub-trigger-propagate.svg?style=flat-square)](LICENSE)
+
 This is a webapp for driving [Automated Builds](https://docs.docker.com/docker-hub/builds/)
 on [Docker Hub](https://hub.docker.com).
 
